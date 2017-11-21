@@ -27,14 +27,15 @@ public final class MessageConsumerClient {
 
                 log.info("About to start route: Kafka Server -> Log ");
 
-                from("kafka:dev-default-topic?brokers=kafka01-prod02.messagehub.services.us-south.bluemix.net:9093,kafka02-prod02.messagehub.services.us-south.bluemix.net:9093,kafka03-prod02.messagehub.services.us-south.bluemix.net:9093,kafka04-prod02.messagehub.services.us-south.bluemix.net:9093,kafka05-prod02.messagehub.services.us-south.bluemix.net:9093"
+                from("kafka:cptb?brokers=kafka01-prod02.messagehub.services.eu-gb.bluemix.net:9093,kafka02-prod02.messagehub.services.eu-gb.bluemix.net:9093,kafka03-prod02.messagehub.services.eu-gb.bluemix.net:9093,kafka04-prod02.messagehub.services.eu-gb.bluemix.net:9093,kafka05-prod02.messagehub.services.eu-gb.bluemix.net:9093"
                         + "&saslMechanism=PLAIN"
                         + "&securityProtocol=SASL_SSL"
                         + "&sslProtocol=TLSv1.2"
                         + "&sslEnabledProtocols=TLSv1.2"
                         + "&sslEndpointAlgorithm=HTTPS"
-                        + "&saslJaasConfig=org.apache.kafka.common.security.plain.PlainLoginModule required username=\"gMv6eTagAteHkcof\" password=\"yLWapiHkJ7bxtAxHvMJILLHLSw8GOR4L\";"
-                        + "&groupId=mygroup")//.to("stream:out")
+                     //   + "&saslJaasConfig=org.apache.kafka.common.security.plain.PlainLoginModule required username=\"lzMdTcMvMrJzdfnL\" password=\"xH4eWDI051gmIs0lLn3O34QRlP1uMj31\";"
+                     + "&saslJaasConfig=org.apache.kafka.common.security.plain.PlainLoginModule required username=\"ltscrdtthWw284Aj\" password=\"dIgGq0mQSAb4rn8AoaPuk8WtjnfNChWR\";"
+                     + "&groupId=mygroup").to("stream:out")
                         .routeId("FromKafka")
                     .log("${body}");
             }
