@@ -4,15 +4,14 @@ import java.util.Properties;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.LongDeserializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MyKafkaConsumer {
+public class KafkaConsumer {
 	
-    private static final Logger LOG = LoggerFactory.getLogger(MyKafkaConsumer.class);
+    private static final Logger LOG = LoggerFactory.getLogger(KafkaConsumer.class);
 	
 	private static Consumer<Long, String> createConsumer() {
 	      final Properties props = new Properties();
@@ -33,7 +32,7 @@ public class MyKafkaConsumer {
 
 	      // Create the consumer using props.
 	      final Consumer<Long, String> consumer =
-	                                  new KafkaConsumer<>(props);
+	                                  new org.apache.kafka.clients.consumer.KafkaConsumer(props);
 
 	      // Subscribe to the topic.
 	      consumer.subscribe(Collections.singletonList("cptb"));

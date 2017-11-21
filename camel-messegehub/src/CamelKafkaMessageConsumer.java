@@ -5,11 +5,11 @@ import org.apache.camel.impl.DefaultCamelContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class MessageConsumerClient {
+public final class CamelKafkaMessageConsumer {
 
-    private static final Logger LOG = LoggerFactory.getLogger(MessageConsumerClient.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CamelKafkaMessageConsumer.class);
 
-    private MessageConsumerClient() {
+    private CamelKafkaMessageConsumer() {
     }
 
     public static void main(String[] args) throws Exception {
@@ -33,8 +33,8 @@ public final class MessageConsumerClient {
                         + "&sslProtocol=TLSv1.2"
                         + "&sslEnabledProtocols=TLSv1.2"
                         + "&sslEndpointAlgorithm=HTTPS"
-                     //   + "&saslJaasConfig=org.apache.kafka.common.security.plain.PlainLoginModule required username=\"lzMdTcMvMrJzdfnL\" password=\"xH4eWDI051gmIs0lLn3O34QRlP1uMj31\";"
-                     + "&saslJaasConfig=org.apache.kafka.common.security.plain.PlainLoginModule required username=\"ltscrdtthWw284Aj\" password=\"dIgGq0mQSAb4rn8AoaPuk8WtjnfNChWR\";"
+                        + "&saslJaasConfig=org.apache.kafka.common.security.plain.PlainLoginModule required username=\"lzMdTcMvMrJzdfnL\" password=\"xH4eWDI051gmIs0lLn3O34QRlP1uMj31\";"
+                    // + "&saslJaasConfig=org.apache.kafka.common.security.plain.PlainLoginModule required username=\"ltscrdtthWw284Aj\" password=\"dIgGq0mQSAb4rn8AoaPuk8WtjnfNChWR\";"
                      + "&groupId=mygroup").to("stream:out")
                         .routeId("FromKafka")
                     .log("${body}");
